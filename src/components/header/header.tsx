@@ -4,6 +4,7 @@ import { MdShoppingCart } from "react-icons/md";
 import headphone from "../../assets/headphone.png"
 import { useState } from "react";
 import { VscChromeClose } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 export default function Header(){
   const [hamburger,setHamburger]=useState(false)
   function handleHamburger(){
@@ -17,7 +18,7 @@ export default function Header(){
         {hamburger ? <VscChromeClose  className="text-white" onClick={handleHamburger}/>:<RxHamburgerMenu className="text-white" onClick={handleHamburger} />}
         <div className={`${hamburger ? "flex flex-col mt-4" : "hidden"} absolute top-[40px] left-1 bg-black text-white p-4 gap-3 z-10`}>
             <p>HOME</p>
-            <p>PRODUCTS</p>
+            <Link to="/products">PRODUCTS</Link>
             <p>FEEDBACK</p>
             <p>SALE</p>
           </div>
