@@ -8,6 +8,7 @@ import yx1 from "../../assets/products/yx1.png"
 import { TiMinus, TiPlus } from 'react-icons/ti';
 import { useState } from 'react';
 import Header from '../../components/header/header';
+import { useCart } from '../../context';
 
 const AboutHeadphone1 = () => {
   const { id } = useParams<{ id: string }>(); // Get the product ID from the URL
@@ -82,6 +83,16 @@ const AboutHeadphone1 = () => {
   }
   setNumber(number-1)
  }
+  const { addToCartsItems, cartItems }:any = useCart();
+  console.log(cartItems)
+
+  const handleAddToCart = () => {
+    if (product && number > 0) {
+      addToCartsItems(product, number); // Add product with quantity to the cart
+    }
+  };
+
+
 
   if (!product) {
     return <div>Product not found</div>;
@@ -107,7 +118,7 @@ const AboutHeadphone1 = () => {
           <p>{number}</p>
           <TiPlus className='text-[12px] text-gray-500'onClick={plus} />
         </div>
-        <button className='w-[160px] h-[48px] bg-[#D87D4A] text-white'>ADD TO CART</button>
+        <button className='w-[160px] h-[48px] bg-[#D87D4A] text-white' onClick={handleAddToCart}>ADD TO CART</button>
       </div>
       </div>
       </div>

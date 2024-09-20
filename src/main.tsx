@@ -4,6 +4,7 @@ import './index.css'
 import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import ProductsPage from './pages/products/products.tsx'
 import AboutHeadphone1 from './pages/aboutheadphone1/abouthd1.tsx'
+import {  Context  } from './context/index.tsx'
 
 const router = createBrowserRouter([
     {
@@ -21,5 +22,7 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')!).render(
-    <RouterProvider router={router}/>
+    <Context>
+        <RouterProvider router={router}/>
+    </Context>
 )
