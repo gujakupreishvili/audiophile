@@ -9,7 +9,7 @@ import { useCart } from "../../context";
 export default function Header() {
   const [hamburger, setHamburger] = useState(false);
   const [showCart, setShowCart] = useState(false); 
-  const { cartItems }: any = useCart(); 
+  const { cartItems, setCartItems }: any = useCart(); 
 
   const totalItemsInCart = cartItems.reduce((total: number, item: { quantity: number }) => total + item.quantity, 0);
 
@@ -20,6 +20,10 @@ export default function Header() {
   function toggleCart() {
     setShowCart(!showCart);
   }
+  const removeFromCart = (id: string) => {
+    setCartItems((prev: any[]) => prev.filter((item) => item.product.id !== id));
+    console.log("washla")
+  };
 
   return (
     <>
@@ -57,7 +61,9 @@ export default function Header() {
     <div className="absolute bg-white text-black shadow-lg w-[330px] px-[14px] py-[15px] rounded right-[0px] top-[40px] z-50">
       {cartItems.length > 0 ? (
         <>
-          {cartItems.map((item: { product: { url: string | undefined; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; price: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }; quantity: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, index: Key | null | undefined) => (
+          {cartItems.map((item: { product: {
+            [x: string]: string; url: any | undefined; name: any | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; price: any | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; 
+}; quantity: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, index: Key | null | undefined) => (
             <div key={index} className="flex flex-col justify-between mb-[15px]">
               <div className="flex gap-[10px] items-center justify-between">
                 <img src={item.product.url} alt="" className="w-[64px] h-[64px] rounded-[3px]" />
@@ -67,7 +73,7 @@ export default function Header() {
                 </div>
                 <div className="flex items-center gap-[10px]">
                   <p className="text-bold">{item.quantity}</p>
-                  <button className="w-[60px] h-[32px] bg-[#F1F1F1] cursor-pointer text-[14px]">remove</button>
+                  <button className="w-[60px] h-[32px] bg-[#F1F1F1] cursor-pointer text-[14px]" onClick={()=>removeFromCart(item.product.id)}>remove</button>
                 </div>
               </div>
             </div>

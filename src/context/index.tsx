@@ -8,9 +8,23 @@ interface CartItem {
   product: Product;
   quantity: number;
 }
-export const ProductContextProvider = createContext({});
 
-export const useCart = () => useContext(ProductContextProvider);
+// Define the shape of the context value
+interface CartContextValue {
+  cartItems: CartItem[];
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  addToCartsItems: (product: Product, quantity: number) => void;
+}
+
+export const ProductContextProvider = createContext<CartContextValue | undefined>(undefined);
+
+export const useCart = () => {
+  const context = useContext(ProductContextProvider);
+  if (!context) {
+    throw new Error("useCart must be used within a ProductContextProvider");
+  }
+  return context;
+};
 
 export const Context = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -31,7 +45,7 @@ export const Context = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <ProductContextProvider.Provider value={{ addToCartsItems, cartItems }}>
+    <ProductContextProvider.Provider value={{ cartItems, setCartItems, addToCartsItems }}>
       {children}
     </ProductContextProvider.Provider>
   );
