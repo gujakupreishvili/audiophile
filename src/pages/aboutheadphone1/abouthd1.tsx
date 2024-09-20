@@ -86,11 +86,11 @@ const AboutHeadphone1 = () => {
   if (!product) {
     return <div>Product not found</div>;
   }
-  
+
 
   return (
     <>
-    <Header  cartCount={number} />
+    <Header  />
     <div className='flex flex-col gap-[10px]  mt-[40px]'>
       <Link to="/products" className='px-[6%] text-15px text-gray-500 font-normal mb-[14px]'>Go Back</Link>
       <div className='flex flex-col items-center gap-[38px]'>
