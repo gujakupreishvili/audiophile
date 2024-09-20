@@ -4,7 +4,7 @@ import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 
 export default function ProductsPage() {
-  const [cartCount, setCartCount] = useState(0);
+  const [cartCount ] = useState(0);
 
   return (
     <>  
