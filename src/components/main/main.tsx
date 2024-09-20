@@ -5,6 +5,8 @@ import ProductCard from "./productCards";
 import humanMobile from "../../assets/human mobile.png"
 import CustomersCard from "./customers/customers";
 import CountDown from "./countDown/countDown";
+import { Link } from "react-router-dom";
+import headphone from "../../assets/headphone.png"
 
 interface Product {
   name: string;
@@ -31,6 +33,19 @@ const Main: React.FC = () => {
 
   return (
     <>
+        <div className="relative bg-black mb-[90px]">
+  <img src={headphone} alt="" className="w-full" />
+  <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+    <p className="text-gray-500 tracking-[10px]">NEW PRODUCT</p>
+    <h2 className="text-white text-3xl font-bold w-[328px] leading-10 text-[36px] pt-[8px] pb-[6px]">
+      XX99 Mark II Headphones
+    </h2>
+    <p className="text-gray-300 mt-4 w-[328px] leading-[27px] font-normal">
+      Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
+    </p>
+    <Link to="" className="mt-6 px-4 py-2 w-[160px] h-[48px] bg-[#D87D4A] hover:bg-[#FBAF85] hover:cursor-pointer  text-white rounded">See Product</Link>
+  </div>
+</div>
     <div className="flex flex-col items-center gap-[70px] mb-[50px]">
       {products.map((product, index) => (
         <ProductCard key={index} name={product.name} image={product.image} />

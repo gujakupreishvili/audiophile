@@ -6,12 +6,13 @@ import zx7 from "../../../assets/products/zx7.png";
 import yx1 from "../../../assets/products/yx1.png";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function ProductsMain() {
   interface Product {
     id: number;
-    url: string; // Image URL as a string
-    new?: string; // Optional 'new' tag
+    url: string; 
+    new?: string;
     name: string;
     description: string;
   }
@@ -63,25 +64,26 @@ export default function ProductsMain() {
     },
   ];
 
-   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-   const getNextIndex = (index: number) => (index + 1) % products.length;
+  const getNextIndex = (index: number) => (index + 1) % products.length;
 
-   const handleNext = () => {
-     setCurrentIndex((prevIndex) => (prevIndex + 2) % products.length);
-   };
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 2) % products.length);
+  };
 
-   const handlePrev = () => {
-     setCurrentIndex((prevIndex) =>
-       prevIndex === 0 ? products.length - 2 : (prevIndex - 2 + products.length) % products.length
-     );
-   };
- 
-   const secondIndex = getNextIndex(currentIndex);
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? products.length - 2 : (prevIndex - 2 + products.length) % products.length
+    );
+  };
+
+  const secondIndex = getNextIndex(currentIndex);
 
   return (
     <div className="flex flex-col items-center gap-[25px]">
       <div className="flex flex-col justify-center gap-[30px]">
+        
         <div className="flex flex-col items-center mb-8 gap-[15px]">
           <img
             src={products[currentIndex].url}
@@ -100,9 +102,12 @@ export default function ProductsMain() {
             <p className="text-[15px] w-[317px] text-center leading-6 font-normal text-gray-400">
               {products[currentIndex].description}
             </p>
-            <button className="bg-[#D87D4A] w-[160px] h-[48px] text-white cursor-pointer hover:bg-[#fbaf85] transition-all">
+            <Link
+              to={`/products/${products[currentIndex].id}`}
+              className="bg-[#D87D4A] w-[160px] h-[48px] text-white cursor-pointer hover:bg-[#fbaf85] transition-all text-center pt-[12px]"
+            >
               See Product
-            </button>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col items-center mb-8 gap-[15px]">
@@ -123,15 +128,20 @@ export default function ProductsMain() {
             <p className="text-[15px] w-[317px] text-center leading-6 font-normal text-gray-400">
               {products[secondIndex].description}
             </p>
-            <button className="bg-[#D87D4A] w-[160px] h-[48px] text-white cursor-pointer hover:bg-[#fbaf85] transition-all">
+            <Link
+              to={`/products/${products[secondIndex].id}`}
+              className="bg-[#D87D4A] w-[160px] h-[48px] text-white cursor-pointer hover:bg-[#fbaf85] transition-all text-center pt-[12px]"
+            >
               See Product
-            </button>
+            </Link>
           </div>
         </div>
       </div>
+
+      {/* Navigation Arrows */}
       <div className="flex gap-[15px]">
         <BiSolidLeftArrow
-          className="text-black cursor-pointer hover:text-[#D87D4A]  transition-all"
+          className="text-black cursor-pointer hover:text-[#D87D4A] transition-all"
           onClick={handlePrev}
         />
         <BiSolidRightArrow
