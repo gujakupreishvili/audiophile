@@ -88,8 +88,10 @@ const AboutHeadphone1 = () => {
 
   const handleAddToCart = () => {
     if (product && number > 0) {
-      addToCartsItems(product, number); // Add product with quantity to the cart
+      addToCartsItems(product, number);
+      setNumber(0);
     }
+    
   };
 
 

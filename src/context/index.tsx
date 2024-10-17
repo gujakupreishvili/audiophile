@@ -9,7 +9,7 @@ interface CartItem {
   quantity: number;
 }
 
-// Define the shape of the context value
+
 interface CartContextValue {
   cartItems: CartItem[];
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;

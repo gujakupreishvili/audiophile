@@ -9,7 +9,7 @@ export default function CountDown() {
   });
 
   useEffect(() => {
-    const targetDate = new Date("2024-09-30T00:00:00").getTime();
+    const targetDate = new Date("2024-12-30T00:00:00").getTime();
 
     const interval = setInterval(() => {
       const currentTime = new Date().getTime();

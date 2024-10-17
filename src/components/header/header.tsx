@@ -84,7 +84,9 @@ export default function Header() {
               ${cartItems.reduce((total: number, item: { product: { price: number; }; quantity: number; }) => total + (item.product.price * item.quantity), 0).toFixed(2)}
             </p>
           </div>
-          <button className="w-full bg-[#D87D4A] h-[48px] text-white mt-[15px] rounded-sm cursor-pointer hover:bg-">checkout</button>
+          <Link to="/checkout" className="w-full bg-[#D87D4A] h-[48px] text-white mt-[15px] rounded-sm cursor-pointer hover:bg-[#b25e36] flex items-center justify-center">
+               Checkout
+          </Link>
         </>
       ) : (
         <p>Your cart is empty.</p>
