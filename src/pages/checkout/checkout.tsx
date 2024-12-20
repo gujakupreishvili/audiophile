@@ -6,6 +6,20 @@ import cartIcon from "../../assets/cart/Icons.png";
 import mastercard from "../../assets/cart/Mastercard.png";
 import arrowCart from "../../assets/cart/arrow.png";
 import { useCart } from "../../context";
+import { useFormik } from "formik";
+import { validation } from "../../utils/validationSchema";
+
+
+const initialValues = {
+  name: "",
+  phonenumber: "",
+  email: "",
+  adress: "",
+  zipcode: "",
+  city: "", 
+  country: "",
+  cardnumber: "0000 0000 0000 0000",
+};
 
 export default function CheckOut() {
   const { cartItems }: any = useCart();
@@ -27,6 +41,15 @@ export default function CheckOut() {
   console.log("Total:", total);
   console.log("Grand Total:", grandTotal);
 
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: validation,
+    onSubmit: (values) => {
+      console.log("Form values:", values);
+    },
+  });
+
+  const { handleBlur, handleChange, handleSubmit, values,errors } = formik;
   return (
     <>
       <Header  />
@@ -35,7 +58,7 @@ export default function CheckOut() {
       </Link>
       <div className="flex flex-col justify-center items-center">
       <div className=" flex flex-col items-center mt-[20px]">
-        <form className="flex flex-col gap-[15px] bg-white px-[27px] py-[25px]">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-[15px] bg-white px-[27px] py-[25px]">
         <p className="w-[280px] text-[28px] font-semibold">CHECKOUT</p>
           <p className="text-[#D87D4A] text-[13px] font-bold mt-[10px]">
             Billing details
@@ -45,25 +68,37 @@ export default function CheckOut() {
               <p className="text-[12px] font-bold">Name</p>
               <input
                 type="text"
+                value={values.name}
+                name="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Enter Your Name..."
-                className="border-[1px]  border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
+                className={`border-[1px]  ${errors.name ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
               />
             </div>
             <div className="flex flex-col gap-[8px]">
               <p className="text-[12px] font-bold">Email Address</p>
               <input
+                value={values.email}
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
                 type="email"
                 placeholder="Enter Your Email..."
-                className="border-[1px]  border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
+                className={`border-[1px]  ${errors.email ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
               />
             </div>
           </div>
           <div className="flex flex-col gap-[8px]">
             <p className="text-[12px] font-bold">Phone Number</p>
             <input
+              value={values.phonenumber}
+              name="phonenumber"
+              onChange={handleChange}
+              onBlur={handleBlur}
               type="number"
               placeholder="Enter Your Phone Number..."
-              className="border-[1px]  border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
+              className={`border-[1px]  ${errors.phonenumber ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
             />
           </div>
         </form>
@@ -74,35 +109,51 @@ export default function CheckOut() {
           <div className="flex flex-col gap-[8px]">
             <p className="text-[12px] font-bold">Address</p>
             <input
+              value={values.adress}
+              name="adress"
+              onChange={handleChange}
+              onBlur={handleBlur}
               type="text"
               placeholder="Enter Your Address"
-              className="border-[1px]   border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
+              className={`border-[1px]  ${errors.adress ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
             />
           </div>
           <div className="flex flex-col">
             <div className="flex flex-col gap-[8px]">
               <p className="text-[12px] font-bold">Zip Code</p>
               <input
+                value={values.zipcode}
+                name="zipcode"
+                onChange={handleChange}
+                onBlur={handleBlur}
                 type="number"
                 placeholder="Enter Your Zip Code..."
-                className="border-[1px]   border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
+                className={`border-[1px]  ${errors.zipcode ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
               />
             </div>
             <div className="flex flex-col gap-[8px]">
               <p className="text-[12px] font-bold">City</p>
               <input
+                 value={values.city}
+                 name="city"
+                 onChange={handleChange}
+                 onBlur={handleBlur}
                 type="text"
                 placeholder="Enter Your City..."
-                className="border-[1px]   border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
+                className={`border-[1px]  ${errors.city ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
               />
             </div>
           </div>
           <div className="flex flex-col gap-[8px]">
             <p className="text-[12px] font-bold">Country</p>
             <input
+              value={values.country}
+              name="country"
+              onChange={handleChange}
+              onBlur={handleBlur}
               type="text"
               placeholder="Enter Your Country..."
-              className="border-[1px]   border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
+              className={`border-[1px]  ${errors.country ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
             />
           </div>
         </form>
@@ -117,9 +168,13 @@ export default function CheckOut() {
               className="border-[1px]   border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
             />
             <input
-              type="text"
+              type="number"
+              value={values.cardnumber}
+              name="cardnumber"
+              onChange={handleChange}
+              onBlur={handleBlur}
               placeholder="Card  Number"
-              className="border-[1px]   border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
+              className={`border-[1px]  ${errors.cardnumber ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
             />
             <div className="flex gap-[26px]">
               <input
@@ -146,7 +201,7 @@ export default function CheckOut() {
             <img src={arrowCart} alt="" className="absolute top-0 right-10" />
             <img src={arrowCart} alt="" className="absolute top-0 left-16" />
             <p className="absolute bottom-10 left-7 text-white text-[17px]">
-              0000 0000 0000 0000
+              {formik.values.cardnumber}
             </p>
           </div>
         </div>
