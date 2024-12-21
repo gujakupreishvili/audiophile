@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "url": "headphone1.png",
+    "new": "NEW PRODUCT",
+    "name": "XX99 Mark II Headphones",
+    "description": "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
+    "price": 2999,
+    "features": "Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort...",
+    "category": "headphones"
+  },
+  {
+    "id": 2,
+    "url": "headphone2.png",
+    "name": "XX99 Mark I Headphones",
+    "description": "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction...",
+    "price": 1750,
+    "features": "As the headphones all others are measured against...",
+    "category": "headphones"
+  },
+  {
+    "id": 3,
+    "url": "whiteheadphone.png",
+    "name": "XX59 Headphones",
+    "description": "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones...",
+    "price": 899,
+    "features": "These headphones have been created from durable, high-quality materials...",
+    "category": "headphones"
+  },
+  {
+    "id": 4,
+    "url": "zx9.png",
+    "new": "NEW PRODUCT",
+    "name": "ZX9 Speaker",
+    "description": "Upgrade your sound system with the all new ZX9 active speaker...",
+    "price": 4500,
+    "features": "Connect via Bluetooth or nearly any wired source...",
+    "category": "speakers"
+  },
+  {
+    "id": 5,
+    "url": "zx7.png",
+    "name": "ZX7 Speaker",
+    "description": "Stream high quality sound wirelessly with minimal to no loss...",
+    "price": 3500,
+    "features": "Reap the advantages of a flat diaphragm tweeter cone...",
+    "category": "speakers"
+  },
+  {
+    "id": 6,
+    "url": "yx1.png",
+    "name": "YX1 Wireless Earphones",
+    "description": "Tailor your listening experience with bespoke dynamic drivers...",
+    "price": 599,
+    "features": "Experience unrivalled stereo sound thanks to innovative acoustic technology...",
+    "category": "earphones"
+  }
+]
+

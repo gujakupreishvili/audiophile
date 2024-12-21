@@ -138,7 +138,6 @@ export default function ProductsMain() {
         </div>
       </div>
 
-      {/* Navigation Arrows */}
       <div className="flex gap-[15px]">
         <BiSolidLeftArrow
           className="text-black cursor-pointer hover:text-[#D87D4A] transition-all"

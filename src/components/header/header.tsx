@@ -40,10 +40,11 @@ export default function Header() {
             <div className={`${
                 hamburger ? "flex flex-col mt-4" : "hidden"
               } absolute top-[40px] left-1 bg-black text-white p-4 gap-3 z-10`}>
-              <Link to="/">HOME</Link>
-              <Link to="/products">PRODUCTS</Link>
-              <p>FEEDBACK</p>
-              <p>SALE</p>
+              <Link to = "/">HOME</Link>
+              <Link to = "/products"> All PRODUCTS</Link>
+              <Link to = "/headphones">HEADPHONES</Link>
+              <Link to = "/speakers">SPEAKERS</Link>
+              <Link to = "/earphones">EARPHONES</Link>
             </div>
 
             <img src={logo} alt="Logo" />
