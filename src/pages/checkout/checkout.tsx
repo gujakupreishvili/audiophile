@@ -19,6 +19,8 @@ const initialValues = {
   city: "", 
   country: "",
   cardnumber: "0000 0000 0000 0000",
+  expirydate: "",
+  cvc: "",
 };
 
 export default function CheckOut() {
@@ -48,7 +50,14 @@ export default function CheckOut() {
       console.log("Form values:", values);
     },
   });
-
+  const handlechange = (e: { target: { value: any; }; }) => {
+    const { value } = e.target;
+    const onlyNumbers = value.replace(/\D/g, "").slice(0, 16);
+    formik.setFieldValue("cardnumber", onlyNumbers);
+  };
+  const formattedCardNumber = formik.values.cardnumber
+  .padEnd(16, "0")
+  .replace(/(\d{4})(?=\d)/g, "$1 ");
   const { handleBlur, handleChange, handleSubmit, values,errors } = formik;
   return (
     <>
@@ -163,32 +172,36 @@ export default function CheckOut() {
               payment details
             </p>
             <input
-              type="text"
-              placeholder="Cardholder Number"
-              className="border-[1px]   border-[#CFCFCF] border-solid rounded h-[46px] w-[280px] pl-[10px]"
-            />
-            <input
               type="number"
               value={values.cardnumber}
               name="cardnumber"
-              onChange={handleChange}
+              onChange={handlechange}
               onBlur={handleBlur}
               placeholder="Card  Number"
               className={`border-[1px]  ${errors.cardnumber ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
             />
             <div className="flex gap-[26px]">
               <input
-                type="text"
+                type="number"
+                value={values.expirydate}
+                name="expirydate"
+                onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Exp.Date"
-                className="border-[1px]   border-[#CFCFCF] border-solid rounded h-[46px] w-[127px] pl-[10px]"
+                className={`border-[1px]   ${errors.expirydate ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[127px] pl-[10px]`}
               />
               <input
-                type="text"
-                placeholder="CVV"
-                className="border-[1px]   border-[#CFCFCF] border-solid rounded h-[46px] w-[127px] pl-[10px]"
+                type="number"
+                value={values.cvc}
+                name="cvc"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="CVC"
+                className={`border-[1px]   ${errors.cvc ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[127px] pl-[10px]`}
               />
             </div>
           </div>
+
           {/* card details */}
           <div className="relative">
             <img src={cartBack} alt="" />
@@ -201,7 +214,7 @@ export default function CheckOut() {
             <img src={arrowCart} alt="" className="absolute top-0 right-10" />
             <img src={arrowCart} alt="" className="absolute top-0 left-16" />
             <p className="absolute bottom-10 left-7 text-white text-[17px]">
-              {formik.values.cardnumber}
+              {formattedCardNumber}
             </p>
           </div>
         </div>
