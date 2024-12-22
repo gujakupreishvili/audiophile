@@ -8,6 +8,8 @@ import arrowCart from "../../assets/cart/arrow.png";
 import { useCart } from "../../context";
 import { useFormik } from "formik";
 import { validation } from "../../utils/validationSchema";
+import { useState } from "react";
+import Popup from "../../components/popup/popup";
 
 
 const initialValues = {
@@ -24,6 +26,7 @@ const initialValues = {
 };
 
 export default function CheckOut() {
+  const [checkbox, setCheckbox] = useState(false)
   const { cartItems }: any = useCart();
   const shipping = 50;
   const vat = 1000;
@@ -59,6 +62,18 @@ export default function CheckOut() {
   .padEnd(16, "0")
   .replace(/(\d{4})(?=\d)/g, "$1 ");
   const { handleBlur, handleChange, handleSubmit, values,errors } = formik;
+
+  const checkInputs = () => {
+    if (Object.keys(errors).length > 0 || Object.values(values).some((value) => typeof value === "string" && value.trim() === "")) {
+        setCheckbox(false)
+    } else{
+      setCheckbox(true)
+    }
+  };
+  
+  
+  console.log(values, "values")
+  console.log(errors, "erros")
   return (
     <>
       <Header  />
@@ -285,12 +300,13 @@ export default function CheckOut() {
            <p className="text-gray-500">GRAND TOTAL</p>
            <p className="text-[17px] font-semibold">${grandTotal}</p>
          </div>
-         <button className="w-[279px] h-[48px] bg-[#D87D4A] text-white mt-[15px]">CONTINUE & PAY</button>
+         <button onClick={checkInputs}  className="w-[279px] h-[48px] bg-[#D87D4A] text-white mt-[15px]">CONTINUE & PAY</button>
        </div>:<p className="text-gray-500">products is empty</p>}
       </div>
       </div>
       </div>
       <Footer />
+      {checkbox && <Popup />}
     </>
   );
 }

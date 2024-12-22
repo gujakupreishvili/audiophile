@@ -14,19 +14,17 @@ export const validation = Yup.object({
     .required("Email cannot be empty"),
   adress: Yup.string()
     .required("Adress cannot be empty"),
-    zipcode: Yup.number()
+    zipcode: Yup.string()
     .min(1, "Student age must be at least 1 character")
     .required("Zipcode cannot be empty"),
     city: Yup.string()
     .required(" City name cannot be empty"),
     country: Yup.string()
     .required("Coutrycannot be empty"),
-    cardnumber: Yup.number()
-    .required("Card number cannot be empty"),
-    expirydate: Yup.number()
+    expirydate: Yup.string()
     .max(4, "exp must be at most 4 characters")
     .required("exp number cannot be empty"),
-    cvc: Yup.number()
+    cvc: Yup.string()
     .max(3, "exp must be at most 4 characters")
     .required("cvc number cannot be empty"),
 

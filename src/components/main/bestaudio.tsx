@@ -2,7 +2,7 @@ import humanMobile from "../../assets/human mobile.png"
 
 export default function Bestaudio() {
   return (
-    <div className="flex flex-col items-center gap-[20px] mb-[60px]">
+    <div className="flex flex-col items-center gap-[20px] mb-[60px] w-[88%]">
     <img src={humanMobile} alt="" />
     <div className=" flex flex-col items-center gap-[20px] ">
       <h1 className="text-[37px] leading-[38px] font-bold w-[327px] text-center">Bringing you the <span className="text-[#D87D4A]">best</span> audio gear</h1>
