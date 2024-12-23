@@ -10,6 +10,8 @@ import { useFormik } from "formik";
 import { validation } from "../../utils/validationSchema";
 import { useState } from "react";
 import Popup from "../../components/popup/popup";
+import emailjs from "@emailjs/browser"
+
 
 
 const initialValues = {
@@ -68,6 +70,10 @@ export default function CheckOut() {
         setCheckbox(false)
     } else{
       setCheckbox(true)
+      const form = document.querySelector('form'); // მოიძიე ფორმა
+        if (form) {
+            emailjs.sendForm('service_ezaabqi', 'template_sz5q1pc', form, 'ZDeT81yuxK4tD9JRr');
+        }
     }
   };
   

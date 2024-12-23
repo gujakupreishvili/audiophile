@@ -15,9 +15,9 @@ export default function Popup() {
         <div className="mt-6">
           <CountdownCircleTimer
             isPlaying
-            duration={259200} 
+            duration={10} 
             colors={['#D87D4A', '#F7B801', '#A30000', '#A30000']}
-            colorsTime={[259200, 172800, 86400, 0]}
+            colorsTime={[7, 5, 3, 0]}
           >
             {({ remainingTime }) => {
               const days = Math.floor(remainingTime / (24 * 60 * 60));
