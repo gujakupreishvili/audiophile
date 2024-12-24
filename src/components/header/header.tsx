@@ -5,6 +5,7 @@ import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useSt
 import { VscChromeClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context"; 
+import { AnimatePresence,  motion } from "framer-motion";
 
 export default function Header() {
   const [hamburger, setHamburger] = useState(false);
@@ -25,6 +26,68 @@ export default function Header() {
     console.log("washla")
   };
 
+   const menVars = {
+      initial :{
+        scaleY : 0
+      },
+      animate : {
+        scaleY : 1,
+        transition:{
+          duration : 0.5,
+          ease:[0.22, 0 , 0.39, 0]
+
+        }
+      },
+      exit : {
+        scaleY : 0,
+        transition:{
+          duration : 0.5,
+          ease:[0.37, 0 , 0.63, 1]
+
+        }
+      }
+  }
+  const linkVars = {
+    initial: {
+      y:"30vh",
+      transition:{
+        ease:[0.22, 0 , 0.39, 0],
+        duration : 0.5,
+      }
+    },
+    open:{
+      y:0,
+      transition:{
+        ease:[0, 0.55 , 0.45, 1],
+        duration : 0.7,
+      }
+    },
+    // exit : {
+    //   scaleY : 0,
+    //   transition:{
+    //     duration : 0.5,
+    //     ease:[0.22, 0 , 0.36, 1]
+    //   }
+    // }
+  }
+
+  const containerVars = {
+    initial:{
+      transition:{
+        staggerChildren: 0.09,
+        staggerDirection:-1,
+      }
+    },
+    open:{
+      transition:{
+        delayChildren:0.3,
+        staggerChildren: 0.03,
+        staggerDirection:1
+      }
+    }
+
+  }
+
   return (
     <>
       <div className="bg-black border-none py-[20px]">
@@ -35,17 +98,50 @@ export default function Header() {
             ) : (
               <RxHamburgerMenu className="text-white" onClick={handleHamburger} />
             )}
+<AnimatePresence>
+  {hamburger && (
+    <motion.div
+      variants={menVars}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="fixed left-0 top-0 w-full h-screen bg-black text-white p-4 z-50 origin-top"
+    >
+      <VscChromeClose
+        className="text-white absolute left-5 top-[35px]"
+        onClick={handleHamburger}
+      />
+      <motion.div
+        variants={containerVars}
+        initial="initial"
+        animate="open"
+        className="flex flex-col items-center justify-center h-screen text-center"
+      >
+        <div className="overflow-hidden">
+          <motion.div variants={linkVars} className="">
+            <Link to="/">HOME</Link>
+          </motion.div>
 
-            {/* Hamburger menu items */}
-            <div className={`${
-                hamburger ? "flex flex-col mt-4" : "hidden"
-              } absolute top-[40px] left-1 bg-black text-white p-4 gap-3 z-10`}>
-              <Link to = "/">HOME</Link>
-              <Link to = "/products"> All PRODUCTS</Link>
-              <Link to = "/headphones">HEADPHONES</Link>
-              <Link to = "/speakers">SPEAKERS</Link>
-              <Link to = "/earphones">EARPHONES</Link>
-            </div>
+          <motion.div variants={linkVars} className=" mt-[30px]">
+            <Link to="/products">All PRODUCTS</Link>
+          </motion.div>
+
+          <motion.div variants={linkVars} className=" mt-[30px]">
+            <Link to="/headphones">HEADPHONES</Link>
+          </motion.div>
+
+          <motion.div variants={linkVars} className="mt-[30px]">
+            <Link to="/speakers">SPEAKERS</Link>
+          </motion.div>
+
+          <motion.div variants={linkVars} className=" mt-[30px]">
+            <Link to="/earphones">EARPHONES</Link>
+          </motion.div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
             <img src={logo} alt="Logo" />
           </div>

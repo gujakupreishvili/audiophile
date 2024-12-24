@@ -67,15 +67,23 @@ export default function CheckOut() {
 
   const checkInputs = () => {
     if (Object.keys(errors).length > 0 || Object.values(values).some((value) => typeof value === "string" && value.trim() === "")) {
-        setCheckbox(false)
-    } else{
-      setCheckbox(true)
-      const form = document.querySelector('form'); // მოიძიე ფორმა
-        if (form) {
-            emailjs.sendForm('service_ezaabqi', 'template_sz5q1pc', form, 'ZDeT81yuxK4tD9JRr');
-        }
+      setCheckbox(false);
+    } else {
+      setCheckbox(true);
+      const form = document.querySelector('form');
+      if (form) {
+        emailjs.sendForm('service_ezaabqi', 'template_sz5q1pc', form, 'ZDeT81yuxK4tD9JRr')
+          .then(response => {
+            console.log("Success:", response);
+            // Optionally show a success popup here
+          })
+          .catch(error => {
+            console.log("Error:", error);
+          });
+      }
     }
   };
+  
   
   
   console.log(values, "values")
