@@ -9,6 +9,7 @@ import { TiMinus, TiPlus } from 'react-icons/ti';
 import { useState } from 'react';
 import Header from '../../components/header/header';
 import { useCart } from '../../context';
+import Footer from '../../components/footer/footer';
 
 const AboutHeadphone1 = () => {
   const { id } = useParams<{ id: string }>(); // Get the product ID from the URL
@@ -104,10 +105,10 @@ const AboutHeadphone1 = () => {
   return (
     <>
     <Header  />
-    <div className='flex flex-col gap-[10px]  mt-[40px]'>
+    <div className='flex flex-col gap-[10px]  mt-[40px] lg:w-full lg:justify-center'>
       <Link to="/products" className='px-[6%] text-15px text-gray-500 font-normal mb-[14px]'>Go Back</Link>
-      <div className='flex flex-col items-center gap-[38px]'>
-      <img src={product.url} alt={product.name} />
+      <div className='flex flex-col items-center gap-[38px] md:flex-row md:justify-center lg:w-full lg:justify-around lg:mt-[40px] lg:mb-[40px] lg:px-[6%]'>
+      <img src={product.url} alt={product.name}  className='lg:w-[530px] lg:h-[540px]'/>
       <div className='flex flex-col gap-[18px]'>
       <p className='text-[14px] text-[#D87D4A] tracking-[10px]'>{product.new}</p>
       <h1 className='text-[28px] w-[317px] leading-2 font-bold  text-black'>{product.name}</h1>
@@ -128,7 +129,7 @@ const AboutHeadphone1 = () => {
       <h1 className='text-[36px] text-black font-bold mt-[60px] px-[6%]'>FEATURES</h1>
       <p className='text-[15px] text-gray-500 px-[6%]  font-normal mb-[25px]'>{product.features}</p>
     </div>
-    
+    <Footer />
     </>
   );
 };

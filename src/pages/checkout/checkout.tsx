@@ -75,7 +75,6 @@ export default function CheckOut() {
         emailjs.sendForm('service_ezaabqi', 'template_sz5q1pc', form, 'ZDeT81yuxK4tD9JRr')
           .then(response => {
             console.log("Success:", response);
-            // Optionally show a success popup here
           })
           .catch(error => {
             console.log("Error:", error);
@@ -94,14 +93,14 @@ export default function CheckOut() {
       <Link to="/" className="text-[15px] text-gray-400 font-normal mt-[25px] px-[25px] ">
         Go Back
       </Link>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:mt-[142px] lg:gap-[30px]">
       <div className=" flex flex-col items-center mt-[20px]">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-[15px] bg-white px-[27px] py-[25px]">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-[15px] bg-white px-[27px] py-[25px] md:w-[689px]  rounded-[8px]">
         <p className="w-[280px] text-[28px] font-semibold">CHECKOUT</p>
           <p className="text-[#D87D4A] text-[13px] font-bold mt-[10px]">
             Billing details
           </p>
-          <div className="flex flex-col gap-[15px]">
+          <div className="flex flex-col gap-[15px] md:flex-row">
             <div className="flex flex-col gap-[8px]">
               <p className="text-[12px] font-bold">Name</p>
               <input
@@ -111,7 +110,7 @@ export default function CheckOut() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder="Enter Your Name..."
-                className={`border-[1px]  ${errors.name ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
+                className={`border-[1px]  ${errors.name ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]  md:w-[309px]`}
               />
             </div>
             <div className="flex flex-col gap-[8px]">
@@ -123,7 +122,7 @@ export default function CheckOut() {
                 onBlur={handleBlur}
                 type="email"
                 placeholder="Enter Your Email..."
-                className={`border-[1px]  ${errors.email ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
+                className={`border-[1px]  ${errors.email ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px] md:w-[309px]`}
               />
             </div>
           </div>
@@ -136,11 +135,11 @@ export default function CheckOut() {
               onBlur={handleBlur}
               type="number"
               placeholder="Enter Your Phone Number..."
-              className={`border-[1px]  ${errors.phonenumber ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
+              className={`border-[1px]  ${errors.phonenumber ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px] md:w-[309px]`}
             />
           </div>
         </form>
-        <form className="flex flex-col gap-[15px] bg-white px-[27px] py-[25px]">
+        <form className="flex flex-col gap-[15px] bg-white px-[27px] py-[25px] md:w-[689px]">
           <p className="text-[#D87D4A] text-[13px] font-bold mt-[40px] text-start">
             shipping info
           </p>
@@ -153,10 +152,10 @@ export default function CheckOut() {
               onBlur={handleBlur}
               type="text"
               placeholder="Enter Your Address"
-              className={`border-[1px]  ${errors.adress ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
+              className={`border-[1px]  ${errors.adress ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px] md:w-full`}
             />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col md:flex-row md:justify-between">
             <div className="flex flex-col gap-[8px]">
               <p className="text-[12px] font-bold">Zip Code</p>
               <input
@@ -166,7 +165,7 @@ export default function CheckOut() {
                 onBlur={handleBlur}
                 type="number"
                 placeholder="Enter Your Zip Code..."
-                className={`border-[1px]  ${errors.zipcode ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
+                className={`border-[1px]  ${errors.zipcode ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px] md:w-[309px]`}
               />
             </div>
             <div className="flex flex-col gap-[8px]">
@@ -178,7 +177,7 @@ export default function CheckOut() {
                  onBlur={handleBlur}
                 type="text"
                 placeholder="Enter Your City..."
-                className={`border-[1px]  ${errors.city ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
+                className={`border-[1px]  ${errors.city ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px] md:w-[309px]`}
               />
             </div>
           </div>
@@ -191,12 +190,12 @@ export default function CheckOut() {
               onBlur={handleBlur}
               type="text"
               placeholder="Enter Your Country..."
-              className={`border-[1px]  ${errors.country ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
+              className={`border-[1px]  ${errors.country ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px] md:w-[309px]`}
             />
           </div>
         </form>
-        <div className="flex flex-col items-center gap-[30px] bg-white px-[27px] py-[25px]">
-          <div className="flex flex-col gap-[25px]">
+        <div className="flex flex-col items-center gap-[30px] bg-white px-[27px] py-[25px] md:w-[689px]">
+          <div className="flex flex-col gap-[25px] md:w-full">
             <p className="text-[#D87D4A] text-[13px] font-bold mt-[40px] text-start">
               payment details
             </p>
@@ -207,7 +206,7 @@ export default function CheckOut() {
               onChange={handlechange}
               onBlur={handleBlur}
               placeholder="Card  Number"
-              className={`border-[1px]  ${errors.cardnumber ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px]`}
+              className={`border-[1px]  ${errors.cardnumber ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[280px] pl-[10px] md:w-full`}
             />
             <div className="flex gap-[26px]">
               <input
@@ -217,7 +216,7 @@ export default function CheckOut() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder="Exp.Date"
-                className={`border-[1px]   ${errors.expirydate ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[127px] pl-[10px]`}
+                className={`border-[1px]   ${errors.expirydate ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[127px] pl-[10px] md:w-[309px]`}
               />
               <input
                 type="number"
@@ -226,7 +225,7 @@ export default function CheckOut() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder="CVC"
-                className={`border-[1px]   ${errors.cvc ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[127px] pl-[10px]`}
+                className={`border-[1px]   ${errors.cvc ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[127px] pl-[10px] md:w-[309px]`}
               />
             </div>
           </div>
@@ -248,11 +247,11 @@ export default function CheckOut() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center  w-[334px] bg-white px-[27px] py-[25px] mt-[40px]  ">
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center  w-[334px] bg-white px-[27px] py-[25px] mt-[40px]  md:w-[689px] lg:w-[350px] rounded-[8px]  lg:mt-[22px]">
+      <div className="flex flex-col items-center justify-center md:justify-between md:w-full">
         {cartItems.length > 0 ? (
           <>
-            <p className="w-[334px] px-[27px] pb-[25px] text-[18px] font-semibold">summary</p>
+            <p className="w-[334px] px-[27px] pb-[25px] text-[18px] font-semibold md:w-full md:text-start">summary</p>
             {cartItems.map(
               (
                 item: {
@@ -267,7 +266,7 @@ export default function CheckOut() {
               ) => (
                 <div
                   key={index}
-                  className="flex flex-col justify-between mb-[15px] w-[334px] px-[27px] "
+                  className="flex flex-col justify-between mb-[15px] w-[334px] px-[27px] md:w-full "
                 >
                   <div className="flex  gap-[10px] items-center justify-between">
                     <div className="flex justify-start gap-[12px] ">
@@ -295,7 +294,7 @@ export default function CheckOut() {
           ""
         )}
         {cartItems.length>0 ?
-         <div className="flex flex-col  w-[280px] gap-[15px]">
+         <div className="flex flex-col  w-[280px] gap-[15px] md:w-full md:px-[27px]">
          <div className="flex flex-col gap-[10px]">
          <div className="flex justify-between w-full">
            <p className="text-gray-500">TOTAL</p>
@@ -314,7 +313,7 @@ export default function CheckOut() {
            <p className="text-gray-500">GRAND TOTAL</p>
            <p className="text-[17px] font-semibold">${grandTotal}</p>
          </div>
-         <button onClick={checkInputs}  className="w-[279px] h-[48px] bg-[#D87D4A] text-white mt-[15px]">CONTINUE & PAY</button>
+         <button onClick={checkInputs}  className="w-[279px] h-[48px] bg-[#D87D4A] text-white mt-[15px] md:w-full lg:mt-[22px]">CONTINUE & PAY</button>
        </div>:<p className="text-gray-500">products is empty</p>}
       </div>
       </div>

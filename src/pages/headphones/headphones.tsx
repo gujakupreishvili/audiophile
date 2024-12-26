@@ -45,27 +45,31 @@ export default function Headphones() {
   return (
     <>
     <Header />
-    <div className="flex flex-col justify-center items-center gap-[70px] mb-[120px]">
-      <div className="w-full bg-black h-[80px] flex items-center justify-center">
-        <h1 className="text-white text-[28px] font-bold mb-[38px]'">Headphones</h1>
+    <div className="flex flex-col justify-center items-center gap-[70px] mb-[120px] ">
+      <div className="w-full bg-black h-[80px] md:h-[140px] flex items-center justify-center">
+        <h1 className="text-white text-[28px] font-bold mb-[38px] md:text-[38px] md:mt-[20px] ">Headphones</h1>
       </div>
-      {headphones.map((headphone) => (
-        <div key={headphone.id} className="flex flex-col justify-center items-center gap-[20px]">
-          <img src={headphone.url} alt={headphone.name} />
-          <p className="text-[14px] text-[#D87D4A] tracking-[10px]">{headphone.new}</p>
-          <h2 className="text-[35px] w-[317px] text-center text-black">{headphone.name}</h2>
-          <p className="text-[15px] w-[317px] text-center leading-6 font-normal text-gray-400">{headphone.description}</p>
+      {headphones.map((headphone,index) => (
+        <div key={headphone.id}   className={`flex flex-col justify-center items-center gap-[20px] md:w-[689px] lg:w-[1110px] lg:justify-between ${
+          index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+        }`}>
+          <img src={headphone.url} alt={headphone.name} className="md:w-[589px] md:h-[500px] lg:w-[540px] lg:h-[560px] " />
+          <div>
+          <p className="text-[14px] text-[#D87D4A] tracking-[10px] md:tex-[15px] lg:text-start">{headphone.new}</p>
+          <h2 className="text-[35px] w-[317px] text-center text-black md:text-[40px] md:w-[340px] lg:text-start">{headphone.name}</h2>
+          <p className="text-[15px] w-[317px] text-center leading-6 font-normal text-gray-400 md:w-[340px] lg:text-start">{headphone.description}</p>
           <Link
-              to={`/products/${headphone.id}`}
-              className="bg-[#D87D4A] w-[160px] h-[48px] text-white cursor-pointer hover:bg-[#fbaf85] transition-all text-center pt-[12px]"
-            >
-              See Product
-            </Link>
+          to={`/products/${headphone.id}`}
+          className="bg-[#D87D4A] w-[160px] h-[48px] text-white cursor-pointer hover:bg-[#fbaf85] transition-all text-center flex items-center justify-center  lg:mt-[30px]"
+        >
+          See Product
+        </Link>
+          </div>
         </div>
       ))}
-    </div>
     <ProductList />
     <Bestaudio />
+    </div>
     <Footer />
     </>
   );

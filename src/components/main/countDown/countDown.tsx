@@ -35,22 +35,22 @@ export default function CountDown() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-[29px]">
-      <h1 className="text-[48px] text-black">Big Summer Sale</h1>
-      <div className="flex flex-col gap-[20px]">
-        <div className="flex gap-[20px]">
-          <button className="flex flex-col w-[157px] bg-black text-white items-center justify-center h-[70px] rounded-xl">
+    <div className="flex flex-col items-center gap-[29px] md:w-[675px] lg:w-[1110px] lg:justify-around">
+      <h1 className="text-[48px] text-black md:text-[60px]">Big Summer Sale</h1>
+      <div className="flex flex-col gap-[20px]  md:flex-row lg:w-full justify-between ">
+        <div className="flex gap-[20px] lg:w-[50%] lg:justify-between">
+          <button className="flex flex-col w-[157px] bg-black text-white items-center justify-center h-[70px] rounded-xl lg:w-[60%] lg:h-[140px] lg:text-[28px]">
             {String(timeLeft.days).padStart(2, "0")} <span>DAYS</span>
           </button>
-          <button className="flex flex-col w-[157px] bg-black text-white items-center justify-center h-[70px] rounded-xl">
+          <button className="flex flex-col w-[157px] bg-black text-white items-center justify-center h-[70px] rounded-xl lg:w-[60%] lg:h-[140px] lg:text-[28px]">
             {String(timeLeft.hours).padStart(2, "0")} <span>HOURS</span>
           </button>
         </div>
-        <div className="flex gap-[20px]">
-          <button className="flex flex-col w-[157px] bg-black text-white items-center justify-center h-[70px] rounded-xl">
+        <div className="flex gap-[20px] lg:w-[50%] lg:justify-between">
+          <button className="flex flex-col w-[157px] bg-black text-white items-center justify-center h-[70px] rounded-xl lg:w-[60%] lg:h-[140px] lg:text-[28px]">
             {String(timeLeft.minutes).padStart(2, "0")} <span>MINUTES</span>
           </button>
-          <button className="flex flex-col w-[157px] bg-black text-white items-center justify-center h-[70px] rounded-xl">
+          <button className="flex flex-col w-[157px] bg-black text-white items-center justify-center h-[70px] rounded-xl lg:w-[60%] lg:h-[140px] lg:text-[28px]">
             {String(timeLeft.seconds).padStart(2, "0")} <span>SECONDS</span>
           </button>
         </div>
