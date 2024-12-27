@@ -50,13 +50,14 @@ export default function Earphones() {
       >
         <img src={res.url} alt={res.name}  className="md:w-[589px] md:h-[500px] lg:w-[540px] lg:h-[560px]"  />
       </motion.div>
-        <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 1 }}
-            variants={animationVariantsright}
-         className="flex flex-col justify-center items-center lg:items-start lg:justify-start">
+      <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 1 }}
+      variants={animationVariantsright}
+      className="flex flex-col justify-center items-center lg:items-start lg:justify-start"
+    >
         <h2 className="text-[35px] w-[317px] text-center text-black  md:text-[40px] md:w-[340px] lg:text-start" >{res.name}</h2>
         <p className="text-[15px] w-[317px] text-center leading-6 font-normal text-gray-400 md:w-[340px] lg:text-start ">{res.description}</p>
         <Link

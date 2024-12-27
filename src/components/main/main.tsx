@@ -1,7 +1,6 @@
 import CountDown from "./countDown/countDown";
 import { Link } from "react-router-dom";
 import headphone from "../../assets/headphone.png"
-import Bestaudio from "./bestaudio";
 import ProductList from "./productList";
 import oval  from "../../assets/oval.png"
 import zx9 from "../../assets/zx9.png"
@@ -17,6 +16,7 @@ import desktopzx7 from  "../../assets/desktop/desktop.png"
 import desktopzx1 from "../../assets/desktop/desktopzx1.png"
 import desktopx9 from "../../assets/desktop/desktopx9.png"
 import { motion } from "framer-motion";
+import Bestaudio from "./bestaudio";
  
 
 const Main: React.FC = () => {

@@ -120,7 +120,7 @@ const AboutHeadphone1 = () => {
     <>
     <Header  />
     <div className='flex flex-col gap-[10px]  mt-[40px] lg:w-full lg:justify-center'>
-      <Link to="/products" className='px-[6%] text-15px text-gray-500 font-normal mb-[14px]'>Go Back</Link>
+      <Link to="/" className='px-[6%] text-15px text-gray-500 font-normal mb-[14px]'>Go Back</Link>
       <div className='flex flex-col items-center gap-[38px] md:flex-row md:justify-center lg:w-full lg:justify-around lg:mt-[40px] lg:mb-[40px] lg:px-[6%]'>
       <motion.img src={product.url} alt={product.name} 
         initial="hidden"
@@ -141,7 +141,7 @@ const AboutHeadphone1 = () => {
       <p className='text-[15px] w-[317px]  leading-6 font-normal text-gray-400'>{product.description}</p>
       <p className='text-[18px] text-black font-bold'>${product.price}</p>
       {/* add cart */}
-      <div className='flex  gap-[30px]'>
+      <div className='flex gap-[30px]'>
         <div className='flex items-center bg-[#F1F1F1] gap-[22px] py-[8px] w-[120px]  justify-center'>
         <TiMinus  className='text-[12px] text-gray-500' onClick={minus}/>
           <p>{number}</p>
@@ -152,7 +152,6 @@ const AboutHeadphone1 = () => {
        className="px-6 py-2 font-medium bg-[#D87D4A] text-white w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
       ADD TO CART
       </button>
-
       </div>
       </motion.div>
       </div>

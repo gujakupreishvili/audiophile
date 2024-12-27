@@ -119,11 +119,6 @@ export default function Header() {
           <motion.div variants={linkVars} className="">
             <Link to="/">HOME</Link>
           </motion.div>
-
-          <motion.div variants={linkVars} className=" mt-[30px]">
-            <Link to="/products">All PRODUCTS</Link>
-          </motion.div>
-
           <motion.div variants={linkVars} className=" mt-[30px]">
             <Link to="/headphones">HEADPHONES</Link>
           </motion.div>

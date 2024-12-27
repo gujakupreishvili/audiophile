@@ -83,12 +83,13 @@ export default function Headphones() {
               transition={{ duration: 1 }}
               variants={animationVariantsright}
           >
-          <p className="text-[14px] text-[#D87D4A] tracking-[10px] md:tex-[15px] lg:text-start">{headphone.new}</p>
+          <p className="text-[14px] text-[#D87D4A] text-center tracking-[10px] md:tex-[15px] lg:text-start">{headphone.new}</p>
           <h2 className="text-[35px] w-[317px] text-center text-black md:text-[40px] md:w-[340px] lg:text-start">{headphone.name}</h2>
-          <p className="text-[15px] w-[317px] text-center leading-6 font-normal text-gray-400 md:w-[340px] lg:text-start">{headphone.description}</p>
+          <p className="text-[15px] w-[317px] mb-[20px] text-center leading-6 font-normal text-gray-400 md:w-[340px] lg:text-start">{headphone.description}</p>
           <Link
           to={`/products/${headphone.id}`}
-          className="bg-[#D87D4A] w-[160px] h-[48px] text-white cursor-pointer px-6 py-2 font-medium  hover:bg-[#fbaf85] text-center flex items-center justify-center  transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] lg:mt-[30px]"
+         
+          className="bg-[#D87D4A] m-auto w-[160px] h-[48px] text-white cursor-pointer px-6 py-2 font-medium  hover:bg-[#fbaf85] text-center flex items-center justify-center  transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] lg:mt-[30px] lg:m-0"
         >
           See Product
         </Link>
