@@ -50,7 +50,7 @@ export default function Headphones() {
         <h1 className="text-white text-[28px] font-bold mb-[38px] md:text-[38px] md:mt-[20px] ">Headphones</h1>
       </div>
       {headphones.map((headphone,index) => (
-        <div key={headphone.id}   className={`flex flex-col justify-center items-center gap-[20px] md:w-[689px] lg:w-[1110px] lg:justify-between ${
+        <div key={headphone.id}   className={`flex flex-col justify-center items-center gap-[20px] md:w-[689px] lg:w-[1110px] lg:justify-be ${
           index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
         }`}>
           <img src={headphone.url} alt={headphone.name} className="md:w-[589px] md:h-[500px] lg:w-[540px] lg:h-[560px] " />
@@ -60,7 +60,7 @@ export default function Headphones() {
           <p className="text-[15px] w-[317px] text-center leading-6 font-normal text-gray-400 md:w-[340px] lg:text-start">{headphone.description}</p>
           <Link
           to={`/products/${headphone.id}`}
-          className="bg-[#D87D4A] w-[160px] h-[48px] text-white cursor-pointer hover:bg-[#fbaf85] transition-all text-center flex items-center justify-center  lg:mt-[30px]"
+          className="bg-[#D87D4A] w-[160px] h-[48px] text-white cursor-pointer px-6 py-2 font-medium  hover:bg-[#fbaf85] text-center flex items-center justify-center  transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] lg:mt-[30px]"
         >
           See Product
         </Link>

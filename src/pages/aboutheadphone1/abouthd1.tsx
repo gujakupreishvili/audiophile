@@ -121,7 +121,12 @@ const AboutHeadphone1 = () => {
           <p>{number}</p>
           <TiPlus className='text-[12px] text-gray-500'onClick={plus} />
         </div>
-        <button className='w-[160px] h-[48px] bg-[#D87D4A] text-white' onClick={handleAddToCart}>ADD TO CART</button>
+      <button
+      onClick={handleAddToCart}
+       className="px-6 py-2 font-medium bg-[#D87D4A] text-white w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
+      ADD TO CART
+      </button>
+
       </div>
       </div>
       </div>

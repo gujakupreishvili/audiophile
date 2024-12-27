@@ -83,7 +83,12 @@ export default function Header() {
 
   return (
     <>
-      <div className="bg-black border-none py-[20px]">
+      <motion.div 
+      className="bg-black border-none py-[20px]"
+      initial={{ y: "-100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="flex items-center justify-between px-[14px] py-[10px] md:px-[39px] md:py-[30px] lg:px-[165px]">
           <div className="flex justify-between w-[67%] items-center md:justify-start md:gap-[42px] ">
             {hamburger ? (
@@ -172,7 +177,19 @@ export default function Header() {
               ${cartItems.reduce((total: number, item: { product: { price: number; }; quantity: number; }) => total + (item.product.price * item.quantity), 0).toFixed(2)}
             </p>
           </div>
-          <Link to="/checkout" className="w-full bg-[#D87D4A] h-[48px] text-white mt-[15px] rounded-sm cursor-pointer hover:bg-[#b25e36] flex items-center justify-center">
+          
+          <Link to="/checkout"
+                className={`
+                  w-full  h-[48px] lg:rounded-full mt-[15px] rounded-sm cursor-pointer  flex items-center justify-center
+                  text-slate-500
+                  shadow-[-5px_-5px_10px_rgba(255,_255,_255,_0.8),_5px_5px_10px_rgba(0,_0,_0,_0.25)]
+                  
+                  transition-all
+          
+                  hover:shadow-[-1px_-1px_5px_rgba(255,_255,_255,_0.6),_1px_1px_5px_rgba(0,_0,_0,_0.3),inset_-2px_-2px_5px_rgba(255,_255,_255,_1),inset_2px_2px_4px_rgba(0,_0,_0,_0.3)]
+                  hover:text-[#D87D4A]
+              `}
+          >
                Checkout
           </Link>
         </>
@@ -183,7 +200,7 @@ export default function Header() {
   )}
 </div>
         </div>
-      </div>
+      </motion.div>
       <hr className="text-gray-400 w-full h-[1px]" />
     </>
   );
