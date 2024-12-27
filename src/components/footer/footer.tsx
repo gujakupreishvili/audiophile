@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import logo from "../../assets/logo.png"
 import { AiFillFacebook } from "react-icons/ai";
 import { FaInstagram } from "react-icons/fa";
@@ -5,9 +6,19 @@ import { FaTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 export default function Footer(){
+  const animationFooter = {
+    hidden: { opacity: 0,  },
+    visible: { opacity: 1,},
+  }
   return(
     <>
-    <div className="bg-black mt-[100px] flex flex-col items-center py-[42px] md:items-start md:px-[39px] lg:px-[165px]">
+    <motion.div
+       initial="hidden" // ანიმაციის საწყისი მდგომარეობა
+       whileInView="visible" // როცა viewport-ში გამოჩნდება
+       viewport={{ once: true, amount: 0.2 }} // ანიმაცია ერთხელ იწყება, როცა 20% კომპონენტი ჩანს
+       transition={{ duration: 2 }} // ანიმაციის ხანგრძლივობა
+       variants={animationFooter} // ანიმაციის ვარიანტები
+     className="bg-black mt-[100px] flex flex-col items-center py-[42px] md:items-start md:px-[39px] lg:px-[165px]">
       <div className="md:flex md:flex-col md:justify-start md:items-start lg:flex-row lg:w-full lg:justify-between">
         <img src={logo} alt="" className="pb-[35px]" />
         <div className="flex flex-col items-center gap-[20px] md:flex-row ">
@@ -31,7 +42,7 @@ export default function Footer(){
           <FaInstagram  className="text-white text-[25px] hover:text-[#D87D4A;] cursor-pointer "/>
         </div>
       </div>
-    </div>
+    </motion.div>
     </>
   )
 }

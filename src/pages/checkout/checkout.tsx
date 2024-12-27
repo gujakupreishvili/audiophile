@@ -11,6 +11,7 @@ import { validation } from "../../utils/validationSchema";
 import { useState } from "react";
 import Popup from "../../components/popup/popup";
 import emailjs from "@emailjs/browser"
+import { motion } from "framer-motion";
 
 
 
@@ -82,6 +83,10 @@ export default function CheckOut() {
       }
     }
   };
+  const animationFooter = {
+    hidden: { opacity: 0,  },
+    visible: { opacity: 1,},
+  }
   
   
   
@@ -93,7 +98,13 @@ export default function CheckOut() {
       <Link to="/" className="text-[15px] text-gray-400 font-normal mt-[25px] px-[25px] ">
         Go Back
       </Link>
-      <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:mt-[142px] lg:gap-[30px]">
+      <motion.div 
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 1.5 }}
+      variants={animationFooter}
+      className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:mt-[142px] lg:gap-[30px]">
       <div className=" flex flex-col items-center mt-[20px]">
         <form onSubmit={handleSubmit} className="flex flex-col gap-[15px] bg-white px-[27px] py-[25px] md:w-[689px]  rounded-[8px]">
         <p className="w-[280px] text-[28px] font-semibold">CHECKOUT</p>
@@ -219,6 +230,7 @@ export default function CheckOut() {
                 className={`border-[1px]   ${errors.expirydate ? "border-red-500" : "border-[#CFCFCF]"}  border-solid rounded h-[46px] w-[127px] pl-[10px] md:w-[309px]`}
               />
               <input
+              
                 type="number"
                 value={values.cvc}
                 name="cvc"
@@ -317,7 +329,7 @@ export default function CheckOut() {
        </div>:<p className="text-gray-500">products is empty</p>}
       </div>
       </div>
-      </div>
+      </motion.div>
       <Footer />
       {checkbox && <Popup />}
     </>

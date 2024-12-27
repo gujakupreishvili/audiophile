@@ -22,18 +22,14 @@ import { motion } from "framer-motion";
 
 const Main: React.FC = () => {
 
-  interface customer{
-    name: string,
-    text: string
-
+  const animationVariantsleft = {
+    hidden: { opacity: 0, x: -200 },
+    visible: { opacity: 1, x: 0 },  
+  };
+  const animationVariantsright = {
+    hidden: { opacity: 0, x: 200 },
+    visible: { opacity: 1, x: 0 },
   }
-  const customers :customer[]=[
-    {name: "Sarah M.", text:"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations."},
-    {name:"Alex.K", text:"Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly The stabled"},
-    {name: "Luka.S",text:"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not ."}
-
-  ]
-
   return (
     <>
   <div className="relative bg-black mb-[90px] lg:flex lg:flex-row-reverse ">
@@ -62,24 +58,25 @@ const Main: React.FC = () => {
     className="group relative mt-6 px- py-2 pt-[12px] w-[160px] h-[48px] font-medium text-slate-100 transition-colors duration-[400ms] hover:text-[#FBAF85]"
     >
             <span className="absolute left-0 top-0 h-[2px] w-0 bg-[#FBAF85] transition-all duration-100 group-hover:w-full" />
-
-{/* RIGHT */}
-<span className="absolute right-0 top-0 h-0 w-[2px] bg-[#FBAF85] transition-all delay-100 duration-100 group-hover:h-full" />
-
-{/* BOTTOM */}
-<span className="absolute bottom-0 right-0 h-[2px] w-0 bg-[#FBAF85] transition-all delay-200 duration-100 group-hover:w-full" />
-
-{/* LEFT */}
-<span className="absolute bottom-0 left-0 h-0 w-[2px] bg-[#FBAF85] transition-all delay-300 duration-100 group-hover:h-full" />
+          <span className="absolute right-0 top-0 h-0 w-[2px] bg-[#FBAF85] transition-all delay-100 duration-100 group-hover:h-full" />
+        <span className="absolute bottom-0 right-0 h-[2px] w-0 bg-[#FBAF85] transition-all delay-200 duration-100 group-hover:w-full" />
+        <span className="absolute bottom-0 left-0 h-0 w-[2px] bg-[#FBAF85] transition-all delay-300 duration-100 group-hover:h-full" />
       See Product</Link>
-  </motion.div>
-</div>
-<div className="flex flex-col justify-center items-center">
+    </motion.div>
+   </div>
+   <div className="flex flex-col justify-center items-center">
     <ProductList />
 
     <div className="flex flex-col gap-[30px] justify-center items-center mb-[70px]">
 
-    <div className="bg-[#D87D4A] w-[327px] flex flex-col relative justify-center items-center rounded-[8px] md:w-[689px] lg:w-[1110px] lg:h-[560px] " >
+    <motion.div 
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.5 }}
+    transition={{ duration: 1 }}
+    variants={animationVariantsleft}
+
+    className="bg-[#D87D4A] w-[327px] flex flex-col relative justify-center items-center rounded-[8px] md:w-[689px] lg:w-[1110px] lg:h-[560px] " >
       <img src={oval} alt=""  className="absolute top-0 md:hidden" />
       <img src={tabletOval} alt="" className="hidden md:flex absolute top-0 lg:hidden" />
       <img src={desktopOvla} alt="" className="hidden lg:flex absolute top-0 left-0" />
@@ -99,9 +96,15 @@ const Main: React.FC = () => {
           </Link>
         </div>
       </div>
-      </div>
+      </motion.div>
 
-    <div className="rounded-[8px] relative">
+    <motion.div 
+     initial="hidden"
+     whileInView="visible"
+     viewport={{ once: true, amount: 0.3 }}
+     transition={{ duration: 1 }}
+     variants={animationVariantsright}
+    className="rounded-[8px] relative">
       <img src={zx7bg} alt=""  className="rounded-[8px] md:hidden"/>
       <img src={tabletBox} alt="" className=" hidden md:block rounded-[8px] lg:hidden" />
       <img src={desktopzx7} alt="" className="hidden lg:block rounded-[8px]" />
@@ -113,30 +116,37 @@ const Main: React.FC = () => {
           </button>
         </Link>
       </div>
-    </div>
+    </motion.div>
 
     <div className="md:flex md:w-[689px] justify-between lg:w-[1110px] ">
+      <motion.div
+       initial="hidden"
+       whileInView="visible"
+       viewport={{ once: true, amount: 0.5 }}
+       transition={{ duration: 1 }}
+       variants={animationVariantsleft}
+      >
       <img src={earbg} alt="" className="rounded-[8px] md:hidden" />
       <img src={tabletear} alt="" className=" rounded-[8px] hidden md:block lg:hidden" />
       <img src={desktopzx1} alt="" className="hidden lg:block rounded-[8px]" />
-      <div className="bg-[#F1F1F1] rounded-[8px] mt-[20px] px-[24px] pt-[40px] md:h-[340px] md:w-[339px] md:mt-[0px] md:flex md:flex-col md:justify-center md:px-[41px] lg:w-[540px] lg:h-[320px] lg:px-[95px]">
+      </motion.div>
+      <motion.div
+       initial="hidden"
+       whileInView="visible"
+       viewport={{ once: true, amount: 0.5 }}
+       transition={{ duration: 1 }}
+       variants={animationVariantsright}
+       className="bg-[#F1F1F1] rounded-[8px] mt-[20px] px-[24px] pt-[40px] md:h-[340px] md:w-[339px] md:mt-[0px] md:flex md:flex-col md:justify-center md:px-[41px] lg:w-[540px] lg:h-[320px] lg:px-[95px]">
         <h1 className="text-[28px] text-black font-bold pb-[32px] tracking-[2px] ">YX1 EARPHONES</h1>
         <Link to={`/products/6`}>
         <button className="rounded-2xl border-2  border-black text-white bg-black px-6 py-3 font-semibold uppercase  transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none">
           See Product
           </button>
         </Link>
-      </div>
+      </motion.div>
     </div>
     </div>
     <Bestaudio />
-    {/* happy customers div  */}
-    <div className=" flex-col items-center gap-[30px] hidden">
-      <h1 className="text-[27px] text-black font-bold leading-10 ">OUR HAPPY CUSTOMERS</h1>
-      {customers.map((customer, index) =>(
-        <CustomersCard  key={index}name={customer.name} text={customer.text} />
-      ))}
-    </div>
      <CountDown />
 </div>
     </>

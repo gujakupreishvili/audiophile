@@ -10,6 +10,7 @@ import { useState } from 'react';
 import Header from '../../components/header/header';
 import { useCart } from '../../context';
 import Footer from '../../components/footer/footer';
+import { motion } from 'framer-motion';
 
 const AboutHeadphone1 = () => {
   const { id } = useParams<{ id: string }>(); // Get the product ID from the URL
@@ -101,6 +102,19 @@ const AboutHeadphone1 = () => {
     return <div>Product not found</div>;
   }
 
+  const animationVariantsleft = {
+    hidden: { opacity: 0, x: -200 },
+    visible: { opacity: 1, x: 0 },  
+  };
+  const animationVariantsright = {
+    hidden: { opacity: 0, x: 200 },
+    visible: { opacity: 1, x: 0 },
+  }
+  const animationFooter = {
+    hidden: { opacity: 0,  },
+    visible: { opacity: 1,},
+  }
+
 
   return (
     <>
@@ -108,8 +122,20 @@ const AboutHeadphone1 = () => {
     <div className='flex flex-col gap-[10px]  mt-[40px] lg:w-full lg:justify-center'>
       <Link to="/products" className='px-[6%] text-15px text-gray-500 font-normal mb-[14px]'>Go Back</Link>
       <div className='flex flex-col items-center gap-[38px] md:flex-row md:justify-center lg:w-full lg:justify-around lg:mt-[40px] lg:mb-[40px] lg:px-[6%]'>
-      <img src={product.url} alt={product.name}  className='lg:w-[530px] lg:h-[540px]'/>
-      <div className='flex flex-col gap-[18px]'>
+      <motion.img src={product.url} alt={product.name} 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 1 }}
+        variants={animationVariantsleft}
+       className='lg:w-[530px] lg:h-[540px]'/>
+      <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 1 }}
+      variants={animationVariantsright}
+       className='flex flex-col gap-[18px]'>
       <p className='text-[14px] text-[#D87D4A] tracking-[10px]'>{product.new}</p>
       <h1 className='text-[28px] w-[317px] leading-2 font-bold  text-black'>{product.name}</h1>
       <p className='text-[15px] w-[317px]  leading-6 font-normal text-gray-400'>{product.description}</p>
@@ -128,11 +154,23 @@ const AboutHeadphone1 = () => {
       </button>
 
       </div>
+      </motion.div>
       </div>
-      </div>
-      {/* features */}
-      <h1 className='text-[36px] text-black font-bold mt-[60px] px-[6%]'>FEATURES</h1>
-      <p className='text-[15px] text-gray-500 px-[6%]  font-normal mb-[25px]'>{product.features}</p>
+      
+      <motion.h1
+       initial="hidden"
+       whileInView="visible"
+       viewport={{ once: true, amount: 0.5 }}
+       transition={{ duration: 1 }}
+       variants={animationFooter}
+       className='text-[36px] text-black font-bold mt-[60px] px-[6%]'>FEATURES</motion.h1>
+      <motion.p
+       initial="hidden"
+       whileInView="visible"
+       viewport={{ once: true, amount: 0.5 }}
+       transition={{ duration: 1 }}
+       variants={animationFooter}
+       className='text-[15px] text-gray-500 px-[6%]  font-normal mb-[25px]'>{product.features}</motion.p>
     </div>
     <Footer />
     </>

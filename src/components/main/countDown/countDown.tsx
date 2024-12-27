@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export default function CountDown() {
@@ -34,10 +35,31 @@ export default function CountDown() {
     return () => clearInterval(interval);
   }, []);
 
+  const animationVariantsleft = {
+    hidden: { opacity: 0, x: -200 },
+    visible: { opacity: 1, x: 0 },  
+  };
+  const animationVariantsright = {
+    hidden: { opacity: 0, x: 200 },
+    visible: { opacity: 1, x: 0 },
+  }
+
   return (
     <div className="flex flex-col items-center gap-[29px] md:w-[675px] lg:w-[1110px] lg:justify-around">
-      <h1 className="text-[48px] text-black md:text-[60px]">Big Summer Sale</h1>
-      <div className="flex flex-col gap-[20px]  md:flex-row lg:w-full justify-between ">
+      <motion.h1 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 1 }}
+        variants={animationVariantsright}
+      className="text-[48px] text-black md:text-[60px]">Big Summer Sale</motion.h1>
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 1 }}
+        variants={animationVariantsleft}
+      className="flex flex-col gap-[20px]  md:flex-row lg:w-full justify-between ">
         <div className="flex gap-[20px] lg:w-[50%] lg:justify-between">
           <button className="flex flex-col w-[157px] bg-black text-white items-center justify-center h-[70px] rounded-xl lg:w-[60%] lg:h-[140px] lg:text-[28px]">
             {String(timeLeft.days).padStart(2, "0")} <span>DAYS</span>
@@ -54,7 +76,7 @@ export default function CountDown() {
             {String(timeLeft.seconds).padStart(2, "0")} <span>SECONDS</span>
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

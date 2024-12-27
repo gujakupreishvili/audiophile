@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import ProductList from "../../components/main/productList"
 import Bestaudio from "../../components/main/bestaudio"
 import Footer from "../../components/footer/footer"
+import { motion } from "framer-motion"
 
 export default function Speakers() {
   const speakers= [
@@ -27,19 +28,45 @@ export default function Speakers() {
       features:"Reap the advantages of a flat diaphragm tweeter cone. This provides a fast response rate and excellent high frequencies that lower tiered bookshelf speakers cannot provide. The woofers are made from aluminum that produces a unique and clear sound. XLR inputs allow you to connect to a mixer for more advanced usage.The ZX7 speaker is the perfect blend of stylish design and high performance. It houses an encased MDF wooden enclosure which minimises acoustic resonance. Dual connectivity allows pairing through bluetooth or traditional optical and RCA input. Switch input sources and control volume at your finger tips with the included wireless remote. This versatile speaker is equipped to deliver an authentic listening experience."
     },
   ]
+  const animationVariantsleft = {
+    hidden: { opacity: 0, x: -200 },
+    visible: { opacity: 1, x: 0 },  
+  };
+  const animationVariantsright = {
+    hidden: { opacity: 0, x: 200 },
+    visible: { opacity: 1, x: 0 },
+  }
   return (
     <>
    <Header />
   <div className="flex flex-col justify-center items-center gap-[70px] mb-[120px]">
-    <div className="w-full bg-black h-[80px] md:h-[140px] flex items-center justify-center">
+    <motion.div 
+    initial={{ x: "-100%" }}
+    animate={{ x: "0%" }}
+    transition={{ duration: 1.2, ease: "easeOut" }} 
+     className="w-full bg-black h-[80px] md:h-[140px] flex items-center justify-center">
       <h1 className="text-white text-[28px] font-bold mb-[38px]'">SPEAKERS</h1>
-    </div>
+    </motion.div>
     {speakers.map((res,index)=>(
         <div key={res.id}  className={`flex flex-col justify-center items-center gap-[20px] md:w-[689px] lg:w-[1110px] lg:justify-between ${
           index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
         }`}>
+          <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 1 }}
+        variants={animationVariantsleft}
+          >
         <img src={res.url} alt={res.name} className="md:w-[589px] md:h-[500px] lg:w-[540px] lg:h-[560px] "   />
-        <div>
+          </motion.div>
+        <motion.div
+         initial="hidden"
+         whileInView="visible"
+         viewport={{ once: true, amount: 0.5 }}
+         transition={{ duration: 1 }}
+         variants={animationVariantsright}
+        >
         <p className="text-[14px] text-[#D87D4A] tracking-[10px] md:tex-[15px] md:mt-[32px lg:text-start]">{res.new}</p>
         <h2 className="text-[35px] w-[317px] text-center text-black md:text-[40px] md:w-[340px] lg:text-start">{res.name}</h2>
         <p className="text-[15px] w-[317px] text-center leading-6 font-normal text-gray-400  md:w-[340px] md:my-[15px]  lg:text-start">{res.description}</p>
@@ -49,7 +76,7 @@ export default function Speakers() {
             >
             See Product
           </Link>
-        </div>
+        </motion.div>
       </div>
     ))}
     <ProductList />
