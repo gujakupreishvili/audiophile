@@ -1,4 +1,3 @@
-import CustomersCard from "./customers/customers";
 import CountDown from "./countDown/countDown";
 import { Link } from "react-router-dom";
 import headphone from "../../assets/headphone.png"
